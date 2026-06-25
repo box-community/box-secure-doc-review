@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Loan document review</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn01.boxcdn.net/platform/preview/3.0.0/en-US/preview.css"
+    />
+    <script src="https://cdn01.boxcdn.net/platform/preview/3.0.0/en-US/preview.js"></script>
+    <style>
+      .preview-container { height: 100vh; width: 100%; }
+    </style>
+  </head>
+  <body>
+    <div class="preview-container"></div>
+
+    <script>
+      // The file ID is the last segment of the URL, e.g. /annotate/1234567890
+      const fileId = window.location.pathname.split("/").pop();
+
+      async function loadPreview() {
+        const res = await fetch(`/api/documents/${fileId}/token`);
+        const { access_token } = await res.json();
+
+        const preview = new Box.Preview();
+        preview.show(fileId, access_token, {
+          container: ".preview-container",
+          showAnnotations: true,
+        });
+      }
+
+      loadPreview();
+    </script>
+  </body>
+</html>

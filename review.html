@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Loan document review</title>
+    <style>
+      body { margin: 0; font-family: system-ui, sans-serif; }
+      header { padding: 12px 20px; background: #f5f6f8; border-bottom: 1px solid #e0e0e0; }
+      iframe { width: 100%; height: calc(100vh - 50px); border: 0; }
+    </style>
+  </head>
+  <body>
+    <header><strong>Loan application 4815</strong> &middot; Borrower tax return</header>
+    <iframe id="doc" title="Borrower document"></iframe>
+
+    <script>
+      // The file ID is the last segment of the URL, e.g. /review/1234567890
+      const fileId = window.location.pathname.split("/").pop();
+
+      async function loadPreview() {
+        const res = await fetch(`/api/documents/${fileId}/embed`);
+        const { embed_url } = await res.json();
+        document.getElementById("doc").src = embed_url;
+      }
+
+      loadPreview();
+    </script>
+  </body>
+</html>
