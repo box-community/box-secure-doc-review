@@ -1,7 +1,7 @@
 # Box secure in-app document review
 
 A minimal, runnable reference app that lets people read and annotate sensitive
-documents **inside your own application**, without going through the Box web app.
+documents inside your own application, without going through the Box web app.
 
 It implements the **upload > conversion > embed** flow with
 [Box View](https://developer.box.com/guides/embed/box-view/): a backend uploads
