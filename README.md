@@ -1,11 +1,11 @@
 # Box secure in-app document review
 
 A minimal, runnable reference app that lets people read and annotate sensitive
-documents **inside your own application** - no detour through the Box web app.
+documents **inside your own application**, without going through the Box web app.
 
-It implements the **upload → conversion → embed** flow with
+It implements the **upload > conversion > embed** flow with
 [Box View](https://developer.box.com/guides/embed/box-view/): a backend uploads
-a document to Box, Box converts it to a high-fidelity HTML5 rendering, and the
+a document to Box, Box converts it to a high-fidelity HTML5 rendering, then the
 app requests a short-lived embed URL and drops it into an `<iframe>`. A second
 page upgrades that bare iframe to
 [Box Content Preview](https://developer.box.com/guides/embed/ui-elements/preview)
@@ -134,7 +134,7 @@ The server starts on `http://127.0.0.1:5000` (with auto-reload enabled).
 ## How it works
 
 The embed link is intentionally short-lived (about one minute) and is generated
-**server-side, on demand** whenever a reviewer opens a document - it is never
+**server-side, on demand** whenever a reviewer opens a document. It's never
 stored or sent ahead of time. For the annotate page, the browser only ever
 receives a **downscoped, file-scoped token** (see `PREVIEW_SCOPES` in
 `preview.py`); the client secret and full access token stay on the server.
