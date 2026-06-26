@@ -45,13 +45,13 @@ box-secure-doc-review/
 
 - **Python 3.11+**
 - A Box account with access to the [Developer Console](https://cloud.app.box.com/developers/console)
-  and admin rights to authorize a Platform App. **A free
+  and admin rights to authorize a Platform App. A free
   [Box developer account](https://account.box.com/signup/developer) is enough for
-  the core flow** (upload → embed → annotate); consumer/Individual accounts do
-  not work. A paid Box Enterprise plan is only needed for the optional Box AI Q&A
+  the core flow (upload > embed > annotate); consumer/Individual accounts do
+  not work. A paid [Box Enterprise plan](https://www.box.com/pricing/business) is needed for the optional Box AI Q&A
   layer described in the tutorial.
 - A **Client Credentials Grant (CCG)** Platform App with **Application Access**
-  set to **App Access Only**, the scopes **Read all files and folders** and
+  set to **App Access Only**, the scope
   **Read and write all files and folders**, and the app **authorized** in the
   Admin Console.
 
