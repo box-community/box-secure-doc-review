@@ -85,6 +85,13 @@ the full app configuration walkthrough.
    `BOX_ENTERPRISE_ID` from the Developer Console. Leave `LOAN_DOCS_FOLDER_ID=0`
    to upload to the Service Account's root folder, or set a folder ID.
 
+   **If you set a folder ID** for a folder you created in the Box web app,
+   invite the app's **Service Account** as an **Editor** on that folder. The
+   Service Account's email looks like
+   `AutomationUser_xxxxx_xxxxxx@boxdevedition.com` and is listed in your app's
+   settings in the Developer Console. Without this collaboration, uploads
+   return `404 Not Found`.
+
    > **Never commit `.env`.** It is already in `.gitignore`.
 
 4. **(For the annotate page) add your domain to the CORS allow-list** in the
@@ -152,6 +159,7 @@ receives a **downscoped, file-scoped token** (see `PREVIEW_SCOPES` in
 | --- | --- |
 | `unauthorized_client` | Authorize the app in the Admin Console (Developer Console → Authorization → Review and Submit). |
 | `invalid_client` | Check `BOX_CLIENT_ID` / `BOX_CLIENT_SECRET` / `BOX_ENTERPRISE_ID` in `.env`. |
+| `404 Not Found` on upload | The Service Account can't see `LOAN_DOCS_FOLDER_ID`. Invite it as an **Editor** on that folder, or set `LOAN_DOCS_FOLDER_ID=0`. |
 | `404` on `/review/<id>` | Restart the server so the route registers. |
 | Page shows only the header | You opened the HTML over `file://`. Use `http://127.0.0.1:5000/review/<id>`. |
 | Annotate page CORS error | Add the serving origin to the app's CORS allow-list. |
