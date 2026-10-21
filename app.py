@@ -49,7 +49,7 @@ def upload():
 
     try:
         client = get_box_client()
-        file_id = upload_document(client, temp_path)
+        file_id = upload_document(client, temp_path, file_name=incoming.filename)
     finally:
         os.remove(temp_path)
 
