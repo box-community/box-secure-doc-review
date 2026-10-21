@@ -88,9 +88,10 @@ the full app configuration walkthrough.
    **If you set a folder ID** for a folder you created in the Box web app,
    invite the app's **Service Account** as an **Editor** on that folder. The
    Service Account's email looks like
-   `AutomationUser_xxxxx_xxxxxx@boxdevedition.com` and is listed in your app's
-   settings in the Developer Console. Without this collaboration, uploads
-   return `404 Not Found`.
+   `AutomationUser_xxxxx_xxxxxx@boxdevedition.com`. Find it in the Developer
+   Console: open your app, select the **Configuration** tab, and look in the
+   **App Details** sidebar for the **Service Account ID**. Without this
+   collaboration, uploads return `404 Not Found`.
 
    > **Never commit `.env`.** It is already in `.gitignore`.
 
