@@ -95,6 +95,9 @@ def main() -> None:
         file_id = upload_sample(test_client)
         print(f"Uploaded sample-tax-return.pdf as file {file_id}")
 
+        box_name = client.files.get_file_by_id(file_id).name
+        assert box_name == "sample-tax-return.pdf", f"File was named {box_name} in Box"
+
         embed_url = fetch_embed_url(test_client, file_id)
         assert embed_url.startswith("https://"), f"Unexpected embed URL: {embed_url}"
         print("Got an expiring embed URL")
